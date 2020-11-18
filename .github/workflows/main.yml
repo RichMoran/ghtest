@@ -22,8 +22,9 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Add msbuild to PATH
-      #   uses: microsoft/setup-msbuild@v1.0.1        
-        echo "C:/Program Files (x86)/Microsoft Visual Studio/2019/Enterprise/MSBuild/Current/Bin/" >> $GITHUB_PATH
+      #   uses: microsoft/setup-msbuild@v1.0.1  
+        run: |
+          echo "C:/Program Files (x86)/Microsoft Visual Studio/2019/Enterprise/MSBuild/Current/Bin/" >> $GITHUB_PATH
         
       - name: Build
         run: MSBuild.exe /p:DeployOnBuild=true /p:Configuration=Release /p:PublishProfile=${{matrix.build-target}}
